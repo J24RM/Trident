@@ -3,4 +3,4 @@
 002;Ivysaur;Grass/Poison;When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.;Kanto
 007;Squirtle;Water;After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth.;Kanto
 745;Lycanroc;Rock;Pokemon Favorito del Autor del Programa;Alola
-;;;;
+25;Pikachu;Electric;Se dice que gano una liga pokemon;Kanto

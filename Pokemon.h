@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 #include <cstring>
-#include <sstream> // para el istringstream
-#include <fstream>  // Library for .txt 
+#include <sstream> 
+#include <fstream>  
 using namespace std;
 
 
@@ -22,8 +22,16 @@ private:
 
 public:
 	//Constructores
-	Pokemon(int _Npoke, string _Nombre, string _Tipo, string _Descripcion, string _Region);
-	Pokemon();
+	Pokemon(int _Npoke, string _Nombre, string _Tipo, string _Descripcion, string _Region){
+	Npoke = _Npoke;
+	Nombre = _Nombre;
+	Tipo = _Tipo;
+	Descripcion = _Descripcion;
+	Region = _Region;
+
+	}
+
+	Pokemon() : Npoke(0), Nombre(""), Tipo(""), Descripcion(""), Region("") {}	
 
 	//setters
 	void set_npoke(int _Npoke){
@@ -85,17 +93,6 @@ public:
 
 };
 
-//Constructores
-
-Pokemon::Pokemon(int _Npoke, string _Nombre, string _Tipo, string _Descripcion, string _Region){
-	Npoke = _Npoke;
-	Nombre = _Nombre;
-	Tipo = _Tipo;
-	Descripcion = _Descripcion;
-	Region = _Region;
-
-}
-Pokemon::Pokemon() : Npoke(0), Nombre(""), Tipo(""), Descripcion(""), Region("") {}
 
 
 #endif
