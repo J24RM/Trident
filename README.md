@@ -2,12 +2,12 @@
 
 ## 📌 Description
 This program implements an **interactive Pokedex** in C++. It allows you to:
-- Load a list of Pokémon from a file (`pokemons.txt`).  
-- Add new Pokémon and save them to the file.  
-- Display the list of registered Pokémon.  
+- Load a list of Pokémons from a file (`pokemones.txt`).  
+- Add new Pokémons and save them to the file.  
+- Display the list of registered Pokémons.  
 - Automatically keep the list sorted by Pokédex number using **Merge Sort**.  
 
-The program simulates Professor Oak’s Pokedex, showing a simple menu to interact with the registered Pokémon.  
+The program simulates Professor Oak’s Pokedex, showing a simple menu to interact with the registered Pokémons.  
 
 ---
 
@@ -23,7 +23,7 @@ To run:
 ```bash
 ./main
 ```
-⚠️ Important: the pokemons.txt file must be in the same folder as main.cpp and the executable.
+⚠️ Important: the pokemones.txt file must be in the same folder as main.cpp and the executable.
 
 ---
 
@@ -53,6 +53,28 @@ A LIFO (Last-In, First-Out) container used to store a log of user actions.
 - Viewing History (Menu Option 4): This involves creating a copy of the stack and then popping h (history size) elements one by one. This operation is O(h).
 - Viewing Consulted Pokémon (Menu Option 5): This iterates through a copy of the history stack (O(h)) and, for each relevant entry, performs a linear search on the Pokémon vector (O(n)). The total complexity for this operation is O(h * n).
 
+### Performs a correct and complete complexity analysis for the other components of the program 
+
+#### Menu Option 2 (Ver Pokemones)
+
+His complexity is O(n) because it iterates through all the vector that contains the pokemones 
+
+#### Menu Option 3 (Consultar Pokemon)
+
+Its complexity is O(n) in the worst case because the program searches through all the vector of the pokemones until it encounters the selected Pokémon, if the Pokémon is at the end of the list the program would search through all the vector of pokemones.
+
+#### Cargar Pokes
+
+His complexity is O(n) because the program reads through the entire file.txt to load all the Pokemons saved in the file.txt
+
+#### Complexity of all the program
+
+- Best Case (O)n : Selecting Menu option 2, 3, because their complexity is O(n) + the saving action to history which has O(1) complexity, making the total complexity O(n). For Menu option 4, the complexity is O(n) + O(1) for the saving action, resulting in O(n).
+  
+- Average case O(n log n): This occurs when we choose Option 1 (Agregar Pokemon). The complexity is O(1) for the function's internal operations + O(n log n) for Merge Sort + O(1) for the saving action, which results in O(n log n).
+
+- Worst case O(n * h): Selecting Menu Option 5 iterates through the entire history stack in O(h). For each entry that is a Pokémon query, the program performs a linear search in the pokemones vector in O(n). Assuming that all the entries are Pokémon queries, the complexity is O(h * n).
+
 ## SICT0302: Decision Making
 
 ### Select a sorting algorithm appropriate to the problem and use it correctly.
@@ -79,7 +101,7 @@ std::stack<Historial>: This structure was chosen to manage the log of user actio
 
 std::stack<Historial>: Information is consulted by creating a temporary copy of the original stack (stack<Historial> tempHis = his;).
 
-- Reasoning: This is done to preserve the original history. A stack can only be traversed by "destroying" it (i.e., by calling pop()).
+- Reasoning: This is done to preserve the original history. A stack can only be traversed by "destroying" it .
 
 - Mechanism: A while (!tempHis.empty()) loop is used. Inside the loop, tempHis.top() accesses the most recent action to display it, and tempHis.pop() removes it to allow access to the next item. This process repeats until the temporary stack is empty, displaying all history items from most recent to oldest.
 
@@ -105,6 +127,6 @@ The program uses the C++ <fstream> library to handle file I/O for the pokemons.t
 
 - An std::fstream object is opened using fstream::app (append mode). This ensures that new data is added to the end of the file without deleting existing content.
 
-- The new Pokémon's data is formatted into a single string (Text) separated by semicolons, followed by a newline character (\n).
+- The new Pokémons data is formatted into a single string (Text) separated by semicolons, followed by a newline character (\n).
 
 - The << operator is used to write this string to the file, and archivo.close() saves the changes.
