@@ -54,7 +54,7 @@ void agregarPoke(string _Npoke, string _Nombre, string _Tipo, string _Descripcio
 
 	if (!archivo.is_open()) {
     	std::cerr << "Error: no se pudo abrir el archivo " << nombreArchivo << "\n";
-    	return pokemons; // Retorna vector vacío
+    	return pokemons; 
 	}	
 
 
@@ -90,7 +90,7 @@ void agregarPoke(string _Npoke, string _Nombre, string _Tipo, string _Descripcio
 
 		//Almacenar
 
-		pokemons.push_back(poke); //Almacenar el pokemon 
+		pokemons.push_back(poke); 
 
 	}
 

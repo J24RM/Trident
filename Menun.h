@@ -9,5 +9,6 @@
 #include <stack>
 
 int VerMenun(std::vector<Pokemon>& ,int, int, stack<Historial>&);
+void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &historial );
 
 #endif 
