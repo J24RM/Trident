@@ -4,16 +4,6 @@ Main.cpp
 	Autor: Jesus Rodriguez
 
 	Created on: 20/Sep/2025
-
-	003;Venusaur;Grass/Poison;"The plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.";Kanto
-	004;Charmander;Fire;"Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.";Kanto
-	005;Charmeleon;Fire;"When it swings its burning tail, it elevates the temperature to unbearably high levels.";Kanto
-	006;Charizard;Fire/Flying;"Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.";Kanto
-	007;Squirtle;Water;"After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth.";Kanto
-	008;Wartortle;Water;"Often hides in water to stalk unwary prey. For swimming fast, it moves its ears to maintain balance.";Kanto
-	009;Blastoise;Water;"A brutal Pokémon with pressurized water jets on its shell. They are used for high speed tackles.";Kanto
-	010;Caterpie;Bug;"Its short feet are tipped with suction pads that enable it to relentlessly climb trees and walls.";Kanto
-
 */
 
 
@@ -38,10 +28,12 @@ using namespace std;
 
 int main(){
 
+    // cargar pokemones
     std::vector<Pokemon> pokemons = cargarPokes("pokemons.txt");
 
     stack<Historial> historial;
 
+    // ordenar los pokemones
     ordenaMerge(pokemons);
 
     int band = 1;
@@ -59,7 +51,7 @@ int main(){
     int pk;
     int elc;
 
-
+    // loop de menu inicial
     while(band == 1){
     	cout << "\nElije una opción\n";
     	cout << "1.- Programa Normal\n";

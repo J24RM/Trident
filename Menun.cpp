@@ -9,7 +9,7 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
     string ac;
     string des;
     cout << "\n===== MENU Pokedex =====\n";
-    cout << "1.- Agregar Pokemon\n";
+        cout << "1.- Agregar Pokemon\n";
         cout << "2.- Ver Pokemones\n";
         cout << "3.- Consultar Pokemon\n";
         cout << "4.- Consultar Historial\n";
@@ -23,7 +23,7 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
 
             bool existe = false;
             cout << "\n--- Agregar un Pokemon ---\n";
-            string _Npoke, _Nombre, _Tipo, _Descripcion, _Region;
+            string _Npoke, _Nombre, _Tipo1, _Tipo2, _Descripcion, _Region;
 
             cout << "Numero de pokedex: ";
             cin >> _Npoke; 
@@ -39,9 +39,97 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
                 }
 
             if(!existe){
+                int opct;
+                int topc;
+                string tipos[18] = {"Acero", "Agua", "Bicho", "Dragon", "Electrico", "Fantasma", "Fuego", " Hada", "Hielo", "Lucha", "Normal", "Planta", "Psiquico", 
+                    "Roca", "Siniestro", "Tierra", "Veneno", "Volador"};
+                cout << "¿El pokemon es Doble Tipo?\n";
+                cout << "1.- Si \n";
+                cout << "2.- No \n";
+                cin >> opct;
 
-                cout << "Tipo: ";
-                getline(cin, _Tipo);
+                // Doble Tipo
+                if(opct == 1){
+                    int A = 0;
+                    while(A == 0){
+                        cout << "\n Pokemon Doble-Tipo elejido \n";
+                        cout << "Elije el tipo primario: \n";
+
+                        // Imprimir toda la lista de tipos
+                        for(int i = 0; i < 18; i++){
+                            cout << i+1 << ".- " << tipos[i] << "\n"; 
+                        }
+
+                        cin >> topc;
+                        topc -= 1;
+
+                        if(topc <= 0 || topc > 18){
+                            cout << "Opcion No valida \n";
+                        }
+
+                        else{
+                            _Tipo1 = tipos[topc];
+                            cout << "Se eligio el tipo: " << tipos[topc] << "\n";
+                            A = 1;
+                        }
+                    }
+
+
+                    A = 0;
+                    while (A == 0){
+                        cout << "\n Pokemon Doble-Tipo elejido \n";
+                        cout << "Elije el tipo secundario: \n";
+
+                        // Imprimir toda la lista de tipos
+                        for(int i = 0; i < 18; i++){
+                            cout << i+1 << ".- " << tipos[i] << "\n"; 
+                        }
+
+                        cin >> topc;
+                        topc -= 1;
+
+                        if(topc <= 0 || topc > 18){
+                            cout << "Opcion No valida \n";
+                        }
+
+                        else{
+                            _Tipo2 = tipos[topc];
+                            cout << "Se eligio el tipo: " << tipos[topc] << "\n";
+                            A = 1;
+                        }
+                    }
+                }
+
+
+                // Mono Tipo
+                else{
+                    int A = 0;
+                    while(A == 0){
+                        cout << "\n Pokemon Mono-Tipo elejido \n";
+                        cout << "Elije el tipo primario: \n";
+
+                        // Imprimir toda la lista de tipos
+                        for(int i = 0; i < 18; i++){
+                            cout << i+1 << ".- " << tipos[i] << "\n"; 
+                        }
+
+                        cin >> topc;
+                        topc -= 1;
+
+                        if(topc <= 0 || topc > 18){
+                           cout << "Opcion No valida \n";
+                        }
+
+                        else{
+                            _Tipo1 = tipos[topc];
+                            _Tipo2 = "Nada";
+                            cout << "Se eligio el tipo: " << tipos[topc] << "\n";
+                            A = 1;
+                        }
+                    }
+
+                }
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
                 cout << "Descripcion: ";
                 getline(cin, _Descripcion);
@@ -49,7 +137,7 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
                 cout << "Region: ";
                 getline(cin, _Region);
 
-                agregarPoke(_Npoke, _Nombre, _Tipo, _Descripcion, _Region, "pokemons.txt", pokemons);
+                agregarPoke(_Npoke, _Nombre, _Tipo1, _Tipo2, _Descripcion, _Region, "pokemons.txt", pokemons);
 
                 ac = "Agregar";
                 des =  "Se agrego a " + _Nombre + " (" + _Npoke + ")";
@@ -63,7 +151,7 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
                 // Ordenar después de agregar
                 ordenaMerge(pokemons);
 
-                cout << "Pokemon agregado correctamente.\n";
+                          
         }
 
         else{
@@ -73,12 +161,13 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
             return 1;
         }
 
+
         else if(opc == 2){
             cout << "\n--- Lista de Pokemones ---\n";
             if (pokemons.empty()) {
                 cout << "No hay pokemones cargados.\n";
             } else {
-                for (int i = 0; i < pokemons.size(); i ++) {
+                for (int i = 1; i < pokemons.size(); i ++) {
                     pokemons[i].InfoPoke();
                     cout << "-------------------------\n";
                 }
@@ -137,17 +226,22 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
 
         else if(opc == 5){
             stack<Historial> tempHis = historial;
-            while(!tempHis.empty()){
-                if(tempHis.top().get_accionId() == 3){
-                    for (int i = 0; i < pokemons.size(); i++) {
-                        if (pokemons[i].get_npoke() == tempHis.top().get_num()) {
-                        pokemons[i].InfoPoke();
-                        cout << "-------------------------\n";
-                        break;
+            if(!tempHis.empty()){
+                while(!tempHis.empty()){
+                    if(tempHis.top().get_accionId() == 3){
+                        for (int i = 0; i < pokemons.size(); i++) {
+                            if (pokemons[i].get_npoke() == tempHis.top().get_num()) {
+                            pokemons[i].InfoPoke();
+                            cout << "-------------------------\n";
+                            break;
+                            }
                         }
                     }
+                    tempHis.pop();
                 }
-                tempHis.pop();
+            }
+            else{
+                cout << "No se han consultado pokemones todavia\n";
             }
             return 1;
         }
@@ -181,7 +275,7 @@ void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &histor
     bool existe = false;
     // Agregar Pokemon
     cout << "\n--- Agregar un Pokemon ---\n";
-    string _Npoke, _Nombre, _Tipo, _Descripcion, _Region;
+    string _Npoke, _Nombre, _Tipo1, _Tipo2, _Descripcion, _Region;
 
     _Npoke = "151";
     cout << "Numero de pokedex: " << _Npoke << "\n"; 
@@ -195,8 +289,11 @@ void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &histor
         }
     }
     if(!existe){
-        _Tipo = "Normal";
-        cout << "Tipo: " << _Tipo << "\n";        
+        _Tipo1 = "Normal";
+        cout << "Tipo: " << _Tipo1 << "\n";   
+
+        _Tipo2 = "Nada";
+        cout << "Tipo: " << _Tipo2 << "\n";
 
         _Descripcion = "Se dice que es el ancestro de todos los pokemones, debido a que contiene el ADN de todos";
         cout << "Descripcion: " << _Descripcion << "\n";
@@ -204,7 +301,7 @@ void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &histor
         _Region = "Kanto";
         cout << "Region: " << _Region << "\n";
 
-        agregarPoke(_Npoke, _Nombre, _Tipo, _Descripcion, _Region, "pokemons.txt", pokemons);
+        agregarPoke(_Npoke, _Nombre, _Tipo1, _Tipo2, _Descripcion, _Region, "pokemons.txt", pokemons);
 
         ac = "Agregar";
         des =  "Se agrego a " + _Nombre + " (" + _Npoke + ")";
@@ -229,7 +326,7 @@ void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &histor
         cout << "No hay pokemones cargados.\n";
     } 
     else {
-        for (int i = 0; i < pokemons.size(); i ++) {
+        for (int i = 1; i < pokemons.size(); i ++) {
                 pokemons[i].InfoPoke();
                 cout << "-------------------------\n";
             }
@@ -244,8 +341,8 @@ void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &histor
     historial.push(his2);
     
     // Ver a Pikachu
-    cout << "\n Elije que el número de pokemon que quieres ver: " << pk << "\n";
     pk = 25;
+    cout << "\n Elije que el número de pokemon que quieres ver: " << pk << "\n";
     for (int i = 0; i < pokemons.size(); i++) {
         if (pokemons[i].get_npoke() == pk) {
             pokemons[i].InfoPoke();
@@ -277,8 +374,8 @@ void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &histor
     historial.push(his4);
 
     // Ver a Mew
-    cout << "\n Elije que el número de pokemon que quieres ver: " << pk << "\n";
     pk = 151;
+    cout << "\n Elije que el número de pokemon que quieres ver: " << pk << "\n";
     for (int i = 0; i < pokemons.size(); i++) {
         if (pokemons[i].get_npoke() == pk) {
             pokemons[i].InfoPoke();

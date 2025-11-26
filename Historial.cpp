@@ -2,17 +2,22 @@
 #include <iostream> 
 #include <stack>
 
+
+// Guardado de acciones en el historial
 void Historial::guardar(string ac, string des) {
     accion = ac;
     detalles = des;
 }
 
+
+// Guardado de Pokemones consultados en el historial
 void Historial::guardarPK(string ac, string des, int id, int nu) {
     accion = ac;
     detalles = des;
     accionId = id;
     num = nu;
 }
+
 
 void Historial::VerH(stack<Historial> &his) {
     std::cout << "\n--- Historial de Acciones (Mas reciente primero) ---\n";
@@ -28,11 +33,13 @@ void Historial::VerH(stack<Historial> &his) {
     }
 }
 
+
 Historial::Historial() {
     accion = "";
     detalles = "";
     accionId = 0;
     num = 0;
 }
+
 
 Historial::~Historial() {}

@@ -16,22 +16,24 @@ class Pokemon
 private:
 	int Npoke;
 	string Nombre;
-	string Tipo;
+	string Tipo1;
+	string Tipo2;
 	string Descripcion;
 	string Region;
 
 public:
 	//Constructores
-	Pokemon(int _Npoke, string _Nombre, string _Tipo, string _Descripcion, string _Region){
+	Pokemon(int _Npoke, string _Nombre, string _Tipo1, string _Tipo2, string _Descripcion, string _Region){
 	Npoke = _Npoke;
 	Nombre = _Nombre;
-	Tipo = _Tipo;
+	Tipo1 = _Tipo1;
+	Tipo2 = _Tipo2;
 	Descripcion = _Descripcion;
 	Region = _Region;
 
 	}
 
-	Pokemon() : Npoke(0), Nombre(""), Tipo(""), Descripcion(""), Region("") {}	
+	Pokemon() : Npoke(0), Nombre(""), Tipo1(""), Tipo2(""), Descripcion(""), Region("") {}	
 
 	//setters
 	void set_npoke(int _Npoke){
@@ -42,8 +44,9 @@ public:
 		Nombre = _Nombre;
 	}
 
-	void set_tipo(string _Tipo){
-		Tipo = _Tipo;
+	void set_tipos(string _Tipo1, string _Tipo2){
+		Tipo1 = _Tipo1;
+		Tipo2 = _Tipo2;
 	}
 
 	void set_descripcion(string _Descripcion){
@@ -64,10 +67,6 @@ public:
 		return Nombre;
 	}
 
-	string get_tipo(){
-		return Tipo;
-	}
-
 	string get_descripcion(){
 		return Descripcion; 
 	}
@@ -84,7 +83,14 @@ public:
 
 	cout << "Nombre: " << Nombre << "\n";
 
-	cout << "Tipo: " << Tipo << "\n";
+	// Si solo tiene un tipo
+	if (Tipo2 == "Nada"){
+		cout << "Tipo: " << Tipo1 << "\n";
+	}
+	// Si tiene dos tipos
+	else{
+		cout << "Tipos: " << Tipo1 << " y " << Tipo2 << "\n";
+	}
 
 	cout << "Descripcion: " << Descripcion << "\n";
 

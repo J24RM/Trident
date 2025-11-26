@@ -6,18 +6,21 @@
 #include <string>
 #include <sstream>
 
-void agregarPoke(string _Npoke, string _Nombre, string _Tipo, string _Descripcion, string _Region, const std::string &nombreArchivo, std::vector<Pokemon> &pokemons){
+void agregarPoke(string _Npoke, string _Nombre, string _Tipo1, string _Tipo2, string _Descripcion, string _Region, const std::string &nombreArchivo, std::vector<Pokemon> &pokemons){
 
 	//Archivo
 
-	string Text = _Npoke + ";" + _Nombre + ";" + _Tipo + ";" + _Descripcion + ";" + _Region + "\n";
+	// Guardar en un string los datos del Pokemon
+	string Text = _Npoke + ";" + _Nombre + ";" + _Tipo1 + ";" + _Tipo2 + ";" + _Descripcion + ";" + _Region + "\n";
 
 	fstream archivo;
 
+	// Abrir el archivo
 	archivo.open(nombreArchivo, fstream::app);
 
 	archivo.seekp(1,archivo.ios::end);
 
+	// Guardar el hilo de texto con los datos del Pokemon en el archivo
 	archivo << Text;
 
 	archivo.close();
@@ -29,7 +32,8 @@ void agregarPoke(string _Npoke, string _Nombre, string _Tipo, string _Descripcio
 	}
 	int Npoke = std::stoi(_Npoke);
 
-	Pokemon poke(Npoke, _Nombre, _Tipo, _Descripcion, _Region);
+	// Creacion del Pokemon
+	Pokemon poke(Npoke, _Nombre, _Tipo1, _Tipo2, _Descripcion, _Region);
 
 	pokemons.push_back(poke); //Almacenar el pokemon 
 
@@ -57,7 +61,7 @@ void agregarPoke(string _Npoke, string _Nombre, string _Tipo, string _Descripcio
     	return pokemons; 
 	}	
 
-
+	// Sacar los datos del archivo para cargarlos como objetos de tipo Pokemon
 	std::string linea;
 
 	while(getline(archivo, linea)){
@@ -66,14 +70,14 @@ void agregarPoke(string _Npoke, string _Nombre, string _Tipo, string _Descripcio
 		}
 
 		std::istringstream ss(linea); //Conventir a stream
-		string Nombre, Tipo, Descripcion, Region, strNpoke;
+		string Nombre, Tipo1, Tipo2, Descripcion, Region, strNpoke;
 		int Npoke;
 
 		//Desmenusar
-
 		getline(ss, strNpoke, ';');
 	    getline(ss, Nombre, ';');
-	    getline(ss, Tipo, ';');
+	    getline(ss, Tipo1, ';');
+	    getline(ss, Tipo2, ';');
 	    getline(ss, Descripcion, ';');
 	    getline(ss, Region, ';');
 
@@ -85,11 +89,9 @@ void agregarPoke(string _Npoke, string _Nombre, string _Tipo, string _Descripcio
 
 
 		//Crear
-
-		Pokemon poke(Npoke, Nombre, Tipo, Descripcion, Region);
+		Pokemon poke(Npoke, Nombre, Tipo1, Tipo2, Descripcion, Region);
 
 		//Almacenar
-
 		pokemons.push_back(poke); 
 
 	}

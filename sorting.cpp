@@ -4,24 +4,27 @@ void mergeSplit(std::vector<Pokemon> &A, std::vector<Pokemon> &B, int low, int h
 void mergeArray(std::vector<Pokemon>& A, std::vector<Pokemon>& B, int low, int mid, int high);
 void copyArray(std::vector<Pokemon>& A, std::vector<Pokemon>& B, int low, int high);
 
+
 std::vector<Pokemon>& ordenaMerge(std::vector<Pokemon> &v) {
     std::vector<Pokemon> tmp(v.size());
     mergeSplit(v, tmp, 0, v.size() - 1);
     return v;
 }
 
+// Funcion que se encarga de hacer las divisiones para dividir en Chunks
 void mergeSplit(std::vector<Pokemon> &A, std::vector<Pokemon> &B, int low, int high) {
     int mid;
     if (low >= high) { 
         return;
     }
-    mid = low + (high - low) / 2; 
-    mergeSplit(A, B, low, mid);
-    mergeSplit(A, B, mid + 1, high);
+    mid = low + (high - low) / 2; // Punto medio.
+    mergeSplit(A, B, low, mid); // Ir de forma recursiva a la izquierda.
+    mergeSplit(A, B, mid + 1, high); // Ir de forma recursiva a la derecha.
     mergeArray(A, B, low, mid, high);
     copyArray(A, B, low, high);
 }
 
+// Compara los dos chunks para poner primero el mas chico y luego el mayor y luego los une.
 void mergeArray(std::vector<Pokemon>& A, std::vector<Pokemon> &B, int low, int mid, int high) {
     int i = low;
     int j = mid + 1;
@@ -42,8 +45,11 @@ void mergeArray(std::vector<Pokemon>& A, std::vector<Pokemon> &B, int low, int m
     }
 }
 
+
+//Funcion que se encarga de copiar el array
 void copyArray(std::vector<Pokemon>& A, std::vector<Pokemon> &B, int low, int high) {
     for (int i = low; i <= high; i++) {
         A[i] = B[i];
     }
 }
+
