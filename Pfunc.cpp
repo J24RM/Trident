@@ -1,3 +1,12 @@
+/*
+	En este codigo estan las funciones para aceder al archivo.txt donde esta almacenada la información de los pokemon.
+
+	Funcionalidades:
+		- Agregar Pokemones al archivo.txt
+		- Cargar los pokemones al programa
+*/
+
+
 #include "Pfunc.h"
 #include <iostream>
 #include <thread>
@@ -5,6 +14,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+
 
 void agregarPoke(string _Npoke, string _Nombre, string _Tipo1, string _Tipo2, string _Descripcion, string _Region, const std::string &nombreArchivo, std::vector<Pokemon> &pokemons){
 
@@ -38,6 +48,7 @@ void agregarPoke(string _Npoke, string _Nombre, string _Tipo1, string _Tipo2, st
 	pokemons.push_back(poke); //Almacenar el pokemon 
 
 }
+
 
  std::vector<Pokemon> cargarPokes(const std::string &nombreArchivo){
 

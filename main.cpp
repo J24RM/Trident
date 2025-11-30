@@ -14,17 +14,15 @@ Main.cpp
 #include <sstream> 
 #include <fstream>  
 #include <thread>
-
-using namespace std;
-
-
-
 #include "Pokemon.h"
 #include "sorting.h"
 #include "Historial.h"
 #include "Menun.h"
 #include "Pfunc.h"
 #include <stack>
+
+using namespace std;
+
 
 int main(){
 

@@ -1,3 +1,12 @@
 000;Missigno;NULL;NULL;**1, o�p׉7fj ׉9j||, |*, |�p׉7fj ׉9j1, 62, __, __, __8, _o, 7�p׉7fj ׉9j81, 86, ?7, 94, 9¿¿, 1||, __T,__2, 1*7, 1?r, =||;DESCONOCIDA
 745;Lycanroc;Roca;Nada;Su velocidad desconcierta a sus rivales. Ataca con garras, colmillos y con piedras afiladas de su melena.;Alola
 025;Pikachu;Electrico;Nada;Cuando se enfada, este Pokémon descarga la energía que almacena en el interior de las bolsas de las mejillas.;Kanto
+1;Bulbasaur;Planta;Veneno;Tras nacer, crece alimentándose durante un tiempo de los nutrientes que contiene el bulbo de su lomo.;Kanto
+002;Ivysaur;Planta;Veneno;Cuanta más luz solar recibe, más aumenta su fuerza y más se desarrolla el capullo que tiene en el lomo.;Kanto
+0227;Skarmory;Acero;Volador;Su robusto cuerpo metálico parece pesado, pero en realidad es fino y ligero, lo que le permite volar a 300 km/h.;Jotho
+0909;Fuecoco;Fuego;Nada;Yace sobre rocas calientes, cuyo calor transforma en energía ígnea tras absorberlo por sus escamas rectangulares.;Paldea
+155;Cyndaquil;Fuego;Nada;Suele estar encorvado. Si se enfada o se asusta, lanzará llamas por el lomo.;Jotho
+878;Cufant;Acero;Nada;Raspa con la trompa puntiaguda las rocas duras para alimentarse de ellas. Es dócil y presta ayuda a los humanos con tareas que requieran fuerza.;Galar
+821;Rookidee;Volador;Nada;Es de carácter valiente y temerario. Las marcas blancas que tiene alrededor de los ojos le sirven para espantar a los Pokémon más miedosos.;Galar
+658;Greninja;Agua;Siniestro;Puede detectar enemigos fuera de su campo visual al captar los movimientos del aire con su larga lengua enroscada alrededor del cuello.;Kalos
+384;Rayquaza;Dragon;Volador;Dicen que Rayquaza ha vivido durante millones de años. Las leyendas cuentan que puso fin al continuo enfrentamiento entre Groudon y Kyogre.;Hoenn

@@ -1,9 +1,16 @@
+/*
+    Este codigo es el menu del programa y donde se mandan a llamar las funciones de otros archivos, 
+    tambien aqui se comprueba que los inputs sean los correctos.
+*/
+
 #include "Menun.h"
 #include <iostream>
 #include <thread>
 #include <chrono>
 
+
 void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &historial );
+
 
 int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &historial ){
     string ac;
@@ -43,10 +50,12 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
                 int topc;
                 string tipos[18] = {"Acero", "Agua", "Bicho", "Dragon", "Electrico", "Fantasma", "Fuego", " Hada", "Hielo", "Lucha", "Normal", "Planta", "Psiquico", 
                     "Roca", "Siniestro", "Tierra", "Veneno", "Volador"};
+                string regiones[10] = {"Kanto", "Jotho", "Hoenn", "Sinnoh", "Teselia", "Kalos", "Alola", "Galar", "Hisui", "Paldea"};
                 cout << "¿El pokemon es Doble Tipo?\n";
                 cout << "1.- Si \n";
                 cout << "2.- No \n";
                 cin >> opct;
+
 
                 // Doble Tipo
                 if(opct == 1){
@@ -63,7 +72,7 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
                         cin >> topc;
                         topc -= 1;
 
-                        if(topc <= 0 || topc > 18){
+                        if(topc < 0 || topc > 18){
                             cout << "Opcion No valida \n";
                         }
 
@@ -88,7 +97,7 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
                         cin >> topc;
                         topc -= 1;
 
-                        if(topc <= 0 || topc > 18){
+                        if(topc < 0 || topc > 18){
                             cout << "Opcion No valida \n";
                         }
 
@@ -116,7 +125,7 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
                         cin >> topc;
                         topc -= 1;
 
-                        if(topc <= 0 || topc > 18){
+                        if(topc < 0 || topc > 18){
                            cout << "Opcion No valida \n";
                         }
 
@@ -134,8 +143,28 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
                 cout << "Descripcion: ";
                 getline(cin, _Descripcion);
 
-                cout << "Region: ";
-                getline(cin, _Region);
+                int opcR;
+                int A = 0;
+                while(A == 0){
+                    cout << "Elije la Region: \n";
+
+                    for(int i = 0; i < 10; i++){
+                        cout << i+1 << ".- " << regiones[i] << "\n"; 
+                    }
+
+                    cin >> opcR;
+
+                    opcR -= 1;
+
+                            if(opcR < 0 || opcR > 10){
+                               cout << "Opcion No valida \n";
+                            }
+                            else{
+                                _Region = regiones[opcR];
+                                cout << "Se eligio la region de: " << regiones[opcR] << "\n";
+                                A = 1;
+                    }
+                }
 
                 agregarPoke(_Npoke, _Nombre, _Tipo1, _Tipo2, _Descripcion, _Region, "pokemons.txt", pokemons);
 
@@ -183,6 +212,7 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
             return 1;
         }
 
+
         else if (opc == 3) {
             cout << "\n Elije que el número de pokemon que quieres ver: ";
             cin >> pk;
@@ -209,6 +239,7 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
             return 1;
         }
 
+
         else if (opc == 4) { 
         if (!historial.empty()) {
             Historial visor; 
@@ -223,6 +254,7 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
         historial.push(his);
         return 1;
         }
+
 
         else if(opc == 5){
             stack<Historial> tempHis = historial;
@@ -246,6 +278,7 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
             return 1;
         }
 
+
         else if(opc == 6){
             cout << "Saliendo del programa";
             for (int i = 0; i < 3; i++) {
@@ -255,6 +288,7 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
             return 0;
         }
 
+
         else {
             cout << "Opcion no valida, intenta de nuevo.\n";
             return 1;
@@ -262,17 +296,11 @@ int VerMenun(std::vector<Pokemon> &pokemons ,int opc, int pk, stack<Historial> &
 }
 
 
-
-
-
-
-
-
 void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &historial ){
-
     string ac;
     string des;
     bool existe = false;
+
     // Agregar Pokemon
     cout << "\n--- Agregar un Pokemon ---\n";
     string _Npoke, _Nombre, _Tipo1, _Tipo2, _Descripcion, _Region;
@@ -340,6 +368,7 @@ void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &histor
 
     historial.push(his2);
     
+
     // Ver a Pikachu
     pk = 25;
     cout << "\n Elije que el número de pokemon que quieres ver: " << pk << "\n";
@@ -360,6 +389,7 @@ void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &histor
         }
     }
 
+
     // Ver Historial de acciones
     if (!historial.empty()) {
         Historial visor; 
@@ -372,6 +402,7 @@ void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &histor
     Historial his4;
     his4.guardar("Consulta", "Se consulto el historial de acciones.");
     historial.push(his4);
+
 
     // Ver a Mew
     pk = 151;
@@ -392,6 +423,7 @@ void casoPrueba(std::vector<Pokemon> &pokemons ,int pk, stack<Historial> &histor
             break; 
         }
     }
+
 
     // Ver historial de pokemones vistos
     stack<Historial> tempHis = historial;

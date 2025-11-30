@@ -130,3 +130,4 @@ The program uses the C++ <fstream> library to handle file I/O for the pokemons.t
 - The new Pokémons data is formatted into a single string (Text) separated by semicolons, followed by a newline character (\n).
 
 - The << operator is used to write this string to the file, and archivo.close() saves the changes.
+

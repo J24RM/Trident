@@ -1,3 +1,14 @@
+/*
+    Este codigo son las funciones de la clase historial, el historial se encarga de guarda las acciones que realizo el usuario y los pokemones que consulto.
+
+    Funciones:
+        - Ver historial
+        - Guardar acción
+        - Guardar pokemon consultado
+
+    Para el pokemon consultado solo guardamos el numero de pokedex del pokemon, no toda su informacion
+*/
+
 #include "Historial.h"
 #include <iostream> 
 #include <stack>

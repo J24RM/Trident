@@ -1,3 +1,9 @@
+/*
+	Clase de pokemones:
+		Sirve para de una manera más sencilla y entendible poder guardar la informacion en el programa para asi no tener que 
+		ver el archivo.txt cada vez que querramos acceder a algun pokemon.
+*/
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -22,7 +28,7 @@ private:
 	string Region;
 
 public:
-	//Constructores
+	// constructores
 	Pokemon(int _Npoke, string _Nombre, string _Tipo1, string _Tipo2, string _Descripcion, string _Region){
 	Npoke = _Npoke;
 	Nombre = _Nombre;
@@ -35,7 +41,7 @@ public:
 
 	Pokemon() : Npoke(0), Nombre(""), Tipo1(""), Tipo2(""), Descripcion(""), Region("") {}	
 
-	//setters
+	// setters
 	void set_npoke(int _Npoke){
 		Npoke = _Npoke;
 	}
@@ -57,7 +63,7 @@ public:
 		Region = _Region;
 	}
 
-	//Getters
+	// getters
 
 	int get_npoke(){
 		return Npoke;
@@ -75,7 +81,7 @@ public:
 		return Region;
 	}
 
-	//Funciones
+	// funciones
 
 	void InfoPoke(){
 
@@ -83,11 +89,11 @@ public:
 
 	cout << "Nombre: " << Nombre << "\n";
 
-	// Si solo tiene un tipo
+	// si solo tiene un tipo
 	if (Tipo2 == "Nada"){
 		cout << "Tipo: " << Tipo1 << "\n";
 	}
-	// Si tiene dos tipos
+	// si tiene dos tipos
 	else{
 		cout << "Tipos: " << Tipo1 << " y " << Tipo2 << "\n";
 	}
@@ -98,7 +104,5 @@ public:
 }
 
 };
-
-
 
 #endif

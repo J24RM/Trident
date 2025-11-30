@@ -1,3 +1,8 @@
+/*
+    Este codigo se encarga de ordenar la lista de pokemones, recibe un vector a ordenar lleno de objetos de la clase pokemon,
+    el algoritmo es el mergesort.
+*/
+
 #include "sorting.h" 
 
 void mergeSplit(std::vector<Pokemon> &A, std::vector<Pokemon> &B, int low, int high);
